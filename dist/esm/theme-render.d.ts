@@ -1,6 +1,6 @@
-export interface ThemeConfig {
-    colors: Record<string, string>;
-    varColors?: Record<string, string>;
+export interface ThemeConfig<T = {}> {
+    colors: T;
 }
+export declare const v: (colorName: string) => string;
 export declare const renderTheme: (theme: ThemeConfig) => void;
 export declare const insertTransitionStyle: () => void;

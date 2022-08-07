@@ -5,6 +5,7 @@ var TRANSITION_STYLE_ID = 'theme-transition-style';
 var convertCamelToCssVar = function (camelName) {
     return '--' + camelName.replace(/([A-Z])/, function ($) { return '-' + $.toLowerCase(); });
 };
+export var v = function (colorName) { return "var(".concat(convertCamelToCssVar(colorName), ")"); };
 export var renderTheme = function (theme) {
     var _a;
     /// check if there exist theme style or not
@@ -16,15 +17,10 @@ export var renderTheme = function (theme) {
     var style = document.createElement('style');
     style.id = THEME_STYLE_ID;
     document.head.appendChild(style);
-    var cssColorRules = [];
-    theme.varColors = {};
-    Object.entries(theme.colors).forEach(function (_a) {
+    (_a = style.sheet) === null || _a === void 0 ? void 0 : _a.insertRule(":root {\n    ".concat(Object.entries(theme.colors).map(function (_a) {
         var k = _a[0], v = _a[1];
-        var cssVarName = convertCamelToCssVar(k);
-        theme.varColors[k] = "var(".concat(cssVarName, ")");
-        cssColorRules.push("".concat(cssVarName, ":").concat(v, ";"));
-    });
-    (_a = style.sheet) === null || _a === void 0 ? void 0 : _a.insertRule(":root {\n    ".concat(cssColorRules.join('\n'), "\n  }"), 0);
+        return "".concat(convertCamelToCssVar(k), ":").concat(v, ";");
+    }).join('\n'), "\n  }"), 0);
 };
 export var insertTransitionStyle = function () {
     var _a;

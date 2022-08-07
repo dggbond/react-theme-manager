@@ -1,5 +1,5 @@
 import reactLogo from './assets/react.svg'
-import { useTheme } from '@tilemoon/react-theme-manager'
+import { useTheme, v } from '@tilemoon/react-theme-manager'
 import { themes, MyThemeConfig } from './theme'
 
 import './App.css'
@@ -21,8 +21,8 @@ function App() {
       <div className="card">
         <button
           style={{
-            color: theme.varColors?.fontColor,
-            backgroundColor: theme.varColors?.backgroundColor
+            color: v(theme.colors.fontColor),
+            backgroundColor: v(theme.colors.backgroundColor),
           }}
           onClick={() => setTheme((theme) => theme.name == 'light' ? themes.dark : themes.light)}>
           theme is {theme.name}

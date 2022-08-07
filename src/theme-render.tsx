@@ -1,6 +1,5 @@
-export interface ThemeConfig {
-  colors: Record<string, string>
-  varColors?: Record<string, string>
+export interface ThemeConfig<T = {}> {
+  colors: T
 }
 
 const THEME_STYLE_ID = 'theme-style'
@@ -11,6 +10,8 @@ const TRANSITION_STYLE_ID = 'theme-transition-style'
 const convertCamelToCssVar = (camelName: string) => {
   return '--' + camelName.replace(/([A-Z])/, ($) => '-' + $.toLowerCase())
 }
+
+export const v = (colorName: string) => `var(${convertCamelToCssVar(colorName)})`
 
 export const renderTheme = (theme: ThemeConfig) => {
   /// check if there exist theme style or not
@@ -26,19 +27,8 @@ export const renderTheme = (theme: ThemeConfig) => {
 
   document.head.appendChild(style)
 
-  let cssColorRules: string[] = []
-
-  theme.varColors = {}
-  Object.entries(theme.colors).forEach(([k, v]) => {
-    const cssVarName = convertCamelToCssVar(k)
-
-    theme.varColors![k] = `var(${cssVarName})`
-
-    cssColorRules.push(`${cssVarName}:${v};`)
-  })
-
   style.sheet?.insertRule(`:root {
-    ${cssColorRules.join('\n')}
+    ${Object.entries(theme.colors).map(([k, v]) => `${convertCamelToCssVar(k)}:${v};`).join('\n')}
   }`, 0);
 }
 

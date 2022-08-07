@@ -1,7 +1,12 @@
 import { ThemeConfig } from '@tilemoon/react-theme-manager'
 
-export interface MyThemeConfig extends ThemeConfig {
-  name: string;
+interface ThemeColors {
+  fontColor: string,
+  backgroundColor: string,
+}
+
+export interface MyThemeConfig extends ThemeConfig<ThemeColors> {
+  name: string
 }
 
 const ThemeLight: MyThemeConfig = {
@@ -20,7 +25,7 @@ const ThemeDark: MyThemeConfig = {
   },
 }
 
-export const themes: Record<string, MyThemeConfig> = {
+export const themes = {
   light: ThemeLight,
   dark: ThemeDark,
-}
+} as const
