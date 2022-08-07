@@ -1,2 +1,3 @@
-declare const _default: () => string;
-export default _default;
+export { ThemeManagerProvider } from './theme-context';
+export * from './theme-render';
+export * from './use-theme';

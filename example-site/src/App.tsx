@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react'
-import theme from '@tilemoon/react-theme-manager'
 import reactLogo from './assets/react.svg'
+import { useTheme } from '@tilemoon/react-theme-manager'
+import { themes, MyThemeConfig } from './theme'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    console.log('this')
-  }, [])
-
-  useEffect(() => {
-    console.log(theme())
-  }, [])
+  const { theme, setTheme } = useTheme<MyThemeConfig>()
 
   return (
     <div className="App">
@@ -23,10 +17,15 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + {theme()}</h1>
+      <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button
+          style={{
+            color: theme.varColors?.fontColor,
+            backgroundColor: theme.varColors?.backgroundColor
+          }}
+          onClick={() => setTheme((theme) => theme.name == 'light' ? themes.dark : themes.light)}>
+          theme is {theme.name}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
