@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": [
+      "es5",
+      "es2015",
+      "es2016",
+      "dom",
+      "esnext"
+    ],
+    "module": "es2015",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "target": "es5",
+    "moduleResolution": "node"
+  },
+  "include": ["index.ts"]
+}
