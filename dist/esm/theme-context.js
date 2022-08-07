@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { renderTheme } from './theme-render';
+import { insertTransitionStyle, renderTheme } from './theme-render';
+import { save, load } from './theme-storage';
 var ctx = React.createContext({});
 export var ThemeManagerProvider = function (props) {
-    var _a = React.useState(props.defaultTheme), theme = _a[0], setTheme = _a[1];
+    var _a;
+    var _b = React.useState((_a = load()) !== null && _a !== void 0 ? _a : props.defaultTheme), theme = _b[0], setTheme = _b[1];
     React.useEffect(function () {
+        save(theme);
         renderTheme(theme);
     }, [theme]);
+    React.useEffect(function () {
+        insertTransitionStyle();
+    }, []);
     return React.createElement(ctx.Provider, { value: {
             theme: theme,
             setTheme: setTheme,

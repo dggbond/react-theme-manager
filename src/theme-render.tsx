@@ -35,7 +35,7 @@ export const renderTheme = (theme: ThemeConfig) => {
 export const insertTransitionStyle = () => {
   /// check if there exist theme style or not
   /// if there is, return
-  const existStyle = document.querySelector(`style#${THEME_STYLE_ID}`)
+  const existStyle = document.querySelector(`style#${TRANSITION_STYLE_ID}`)
 
   if (existStyle) return
 

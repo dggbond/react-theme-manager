@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { renderTheme, ThemeConfig } from './theme-render'
+import { insertTransitionStyle, renderTheme, ThemeConfig } from './theme-render'
+import { save, load } from './theme-storage'
 
 export interface ThemeManagerProps<T extends ThemeConfig> {
   theme: T
@@ -14,11 +15,16 @@ interface ThemeManagerProviderProps {
 }
 
 export const ThemeManagerProvider: React.FC<ThemeManagerProviderProps> = (props: ThemeManagerProviderProps) => {
-  const [theme, setTheme] = React.useState(props.defaultTheme)
+  const [theme, setTheme] = React.useState(load() ?? props.defaultTheme)
 
   React.useEffect(() => {
+    save(theme)
     renderTheme(theme)
   }, [theme])
+
+  React.useEffect(() => {
+    insertTransitionStyle()
+  }, [])
 
   return <ctx.Provider value={{
     theme,

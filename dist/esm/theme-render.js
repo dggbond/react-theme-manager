@@ -26,7 +26,7 @@ export var insertTransitionStyle = function () {
     var _a;
     /// check if there exist theme style or not
     /// if there is, return
-    var existStyle = document.querySelector("style#".concat(THEME_STYLE_ID));
+    var existStyle = document.querySelector("style#".concat(TRANSITION_STYLE_ID));
     if (existStyle)
         return;
     var style = document.createElement('style');
