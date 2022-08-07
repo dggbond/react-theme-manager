@@ -18,4 +18,3 @@ export var ThemeManagerProvider = function (props) {
         } }, props.children);
 };
 export default ctx;
-//# sourceMappingURL=theme-context.js.map

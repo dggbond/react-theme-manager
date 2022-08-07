@@ -34,4 +34,3 @@ export var insertTransitionStyle = function () {
     document.head.appendChild(style);
     (_a = style.sheet) === null || _a === void 0 ? void 0 : _a.insertRule("* {\n    transition-property: color, background-color, border;\n    transition-duration: 0.15s;\n    transition-timing-function: ease-out;\n  }", 0);
 };
-//# sourceMappingURL=theme-render.js.map
