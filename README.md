@@ -136,11 +136,16 @@ const Component = () => {
 
 ## Dev
 
+### install
+```bash
+yarn && yarn --cwd ./example-site
+```
+
 ### link package
 first run `yarn link` in root dir and you will get response like this:
 ```bash
-success Registered "example-site".
-info You can now run `yarn link "example-site"` in the projects where you want to use this package and it will be used instead
+success Registered "@tilemoon/react-theme-manager".
+info You can now run `yarn link "@tilemoon/react-theme-manager"` in the projects where you want to use this package and it will be used instead
 ```
 then run `yarn link @tilemoon/react-theme-manager` in subdir `example-site`
 
