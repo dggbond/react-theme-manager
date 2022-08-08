@@ -12,6 +12,7 @@ A simple and clean theme manager for react based on react context api.
 - :rainbow: Auto transition css
 - :cyclone: Auto css variable injection
 - :kaaba: Auto saved for last theme
+- :rocket: High performance
 
 ## Install
 Using npm:
