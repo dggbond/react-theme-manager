@@ -64,7 +64,9 @@ import { ThemeManagerProvider } from '@tilemoon/react-theme-manager'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeManagerProvider defaultTheme={themes.light}>
+    <ThemeManagerProvider onThemeInit={localTheme => {
+      return themes[localTheme] ?? themes.light
+    }}>
       <App />
     </ThemeManagerProvider>
   </React.StrictMode>
@@ -120,7 +122,10 @@ import { v } from '@tilemoon/react-theme-manager'
 
 ```tsx
 <ThemeManagerProvider
-  defaultTheme={/* put the default theme here */}
+  onThemeInit={localTheme => {
+    // localTheme is theme string name last saved to localStorage
+    return YOUR_THEME_CONFIG ?? DEFAULT_THEME
+  }}
 >
 </ThemeManagerProvider>
 ```

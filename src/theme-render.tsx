@@ -1,4 +1,6 @@
 export interface ThemeConfig<T = {}> {
+  name: string
+
   colors: T
 }
 

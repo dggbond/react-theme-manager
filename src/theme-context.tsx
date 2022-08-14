@@ -10,15 +10,16 @@ export interface ThemeManagerProps<T extends ThemeConfig> {
 const ctx = React.createContext<ThemeManagerProps<any>>({} as ThemeManagerProps<any>)
 
 interface ThemeManagerProviderProps {
-  defaultTheme: ThemeConfig
+  onThemeInit: (themeName: string | null) => ThemeConfig
   children: React.ReactNode | React.ReactNode[]
 }
 
 export const ThemeManagerProvider: React.FC<ThemeManagerProviderProps> = (props: ThemeManagerProviderProps) => {
-  const [theme, setTheme] = React.useState(load() ?? props.defaultTheme)
+  const cacheTheme = props.onThemeInit(load())
+  const [theme, setTheme] = React.useState<ThemeConfig>(cacheTheme)
 
   React.useEffect(() => {
-    save(theme)
+    save(theme.name)
     renderTheme(theme)
   }, [theme])
 

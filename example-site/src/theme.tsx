@@ -6,7 +6,6 @@ interface ThemeColors {
 }
 
 export interface MyThemeConfig extends ThemeConfig<ThemeColors> {
-  name: string
 }
 
 const ThemeLight: MyThemeConfig = {
